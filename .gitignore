@@ -1,0 +1,55 @@
+# ── WordPress core ────────────────────────────────────────────
+index.php
+license.txt
+readme.html
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+wp-admin/
+wp-includes/
+
+# ── WordPress config (contains credentials) ───────────────────
+wp-config.php
+wp-config-ddev.php
+
+# ── wp-content: only track our custom theme ───────────────────
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/plugins/
+wp-content/themes/twenty*/
+wp-content/themes/index.php
+
+# ── Theme: build output + dependencies ────────────────────────
+wp-content/themes/stavret/node_modules/
+wp-content/themes/stavret/assets/dist/
+
+# ── DDEV (generated files — kept via .ddev/.gitignore) ────────
+# .ddev/ is tracked (config.yaml, etc.) via its own ignore rules
+
+# ── Database dumps ─────────────────────────────────────────────
+*.sql
+*.sql.gz
+
+# ── macOS ──────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverrideIcon
+
+# ── Editor ─────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Node ───────────────────────────────────────────────────────
+npm-debug.log*

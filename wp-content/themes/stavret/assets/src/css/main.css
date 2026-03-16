@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Typography */
+  --font-heading: 'Cormorant Garant', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+
+  /* Colors — strict black & white palette */
+  --color-black: #0a0a0a;
+  --color-white: #fafafa;
+  --color-gray-50: #f5f5f5;
+  --color-gray-100: #e8e8e8;
+  --color-gray-200: #d4d4d4;
+  --color-gray-300: #a3a3a3;
+  --color-gray-400: #737373;
+  --color-gray-500: #525252;
+  --color-gray-600: #404040;
+  --color-gray-700: #262626;
+  --color-gray-800: #171717;
+  --color-gray-900: #0f0f0f;
+
+  /* Spacing scale */
+  --spacing-px: 1px;
+  --spacing-0: 0;
+
+  /* Border radius */
+  --radius-pill: 9999px;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Base resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  overflow-x: hidden;
+}
+
+/* Heading utility */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-600);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 200ms var(--ease-smooth),
+              color 200ms var(--ease-smooth),
+              border-color 200ms var(--ease-smooth);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-white);
+  padding: 0.75rem 2rem;
+}
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(250, 250, 250, 0.3);
+  padding: 0.75rem 2rem;
+}
+.btn-outline:hover {
+  border-color: var(--color-white);
+  background-color: rgba(250, 250, 250, 0.05);
+}
+
+/* ── Shared page-header classes ─────────────────────────────
+   Used by page-about.php and page-contact.php.
+   Defined here so both pages get identical styling. */
+.stavret-page-header {
+  margin-bottom: 6rem;
+}
+.stavret-section-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  margin: 0 0 1rem;
+}
+.stavret-page-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+/* Shared block heading — small-caps label above a content block */
+.stavret-block-heading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin: 0 0 1.25rem;
+}
+
+/* Nav link */
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-gray-300);
+  transition: color 200ms var(--ease-smooth);
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-white);
+  transition: width 300ms var(--ease-out-expo);
+}
+.nav-link:hover {
+  color: var(--color-white);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.nav-link.active {
+  color: var(--color-white);
+}
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link:focus-visible {
+  outline: 1px solid rgba(250, 250, 250, 0.5);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ── Button focus states ────────────────────────────────────── */
+.btn:focus-visible {
+  outline: 1px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* ── Button active state ────────────────────────────────────── */
+.btn:active {
+  transform: scale(0.96);
+  transition: transform 80ms ease;
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────
+   Add [data-reveal] to any PHP element. JS adds .is-visible
+   when the element enters the viewport. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger siblings via CSS custom property */
+[data-reveal][data-delay="1"] { transition-delay: 0.1s; }
+[data-reveal][data-delay="2"] { transition-delay: 0.2s; }
+[data-reveal][data-delay="3"] { transition-delay: 0.3s; }
+[data-reveal][data-delay="4"] { transition-delay: 0.4s; }
+[data-reveal][data-delay="5"] { transition-delay: 0.5s; }
+
+/* ── Reduced-motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  /* Instantly reveal scroll-reveal elements */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
