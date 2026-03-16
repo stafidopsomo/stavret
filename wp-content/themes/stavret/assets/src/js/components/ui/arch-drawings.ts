@@ -1,20 +1,214 @@
 /**
  * Stavret — Architectural Drawing Data URIs
- * Minimal line drawings on #0a0a0a background.
- * Used as background images in ThreeDMarquee hero.
+ * 24 unique drawings: 12 isometric/3D wireframes + 12 flat technical drawings.
+ * All on #0a0a0a background. Used as background images in ThreeDMarquee hero.
  */
-
-const BG = '%230a0a0a';
-const LINE = 'rgba(255%2C255%2C255%2C0.55)';
-const FAINT = 'rgba(255%2C255%2C255%2C0.15)';
-const LABEL = 'rgba(255%2C255%2C255%2C0.25)';
-const FONT = 'font-family%3D%22monospace%22%20font-size%3D%228%22%20letter-spacing%3D%222%22';
 
 function svg(content: string): string {
   return `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' width='400' height='300'><rect width='400' height='300' fill='%230a0a0a'/>${content}</svg>`;
 }
 
-// ── 1. Floor Plan ──────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+//  3D / ISOMETRIC DRAWINGS (1–12)
+// ══════════════════════════════════════════════════════════════
+
+// ── 1. Isometric Wireframe Building ────────────────────────────────────────
+const isoBuilding = svg(`
+  ${Array.from({length: 15}).map((_, i) => `<line x1='${i*40}' y1='0' x2='${i*40 - 200}' y2='300' stroke='rgba(255,255,255,0.05)' stroke-width='1'/><line x1='${i*40 + 200}' y1='0' x2='${i*40}' y2='300' stroke='rgba(255,255,255,0.05)' stroke-width='1'/>`).join('')}
+  <polygon points='200,40 320,100 320,220 200,280 80,220 80,100' fill='rgba(255,255,255,0.02)' stroke='rgba(255,255,255,0.6)' stroke-width='2'/>
+  <line x1='80' y1='100' x2='200' y2='160' stroke='rgba(255,255,255,0.6)' stroke-width='2'/>
+  <line x1='320' y1='100' x2='200' y2='160' stroke='rgba(255,255,255,0.6)' stroke-width='2'/>
+  <line x1='200' y1='280' x2='200' y2='160' stroke='rgba(255,255,255,0.6)' stroke-width='2'/>
+  <polygon points='200,80 280,120 200,160 120,120' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <polygon points='200,120 280,160 200,200 120,160' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <polygon points='200,160 280,200 200,240 120,200' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <line x1='120' y1='120' x2='120' y2='200' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <line x1='280' y1='120' x2='280' y2='200' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <line x1='200' y1='80' x2='200' y2='160' stroke='rgba(255,255,255,0.4)' stroke-width='1' stroke-dasharray='4 4'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>ISOMETRIC MASSING</text>
+`);
+
+// ── 2. Exploded Axonometric Assembly ───────────────────────────────────────
+const explodedAxon = svg(`
+  <polygon points='200,30 270,65 200,100 130,65' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <line x1='200' y1='100' x2='200' y2='140' stroke='rgba(255,255,255,0.4)' stroke-width='1' stroke-dasharray='3 3'/>
+  <line x1='130' y1='65' x2='130' y2='105' stroke='rgba(255,255,255,0.4)' stroke-width='1' stroke-dasharray='3 3'/>
+  <line x1='270' y1='65' x2='270' y2='105' stroke='rgba(255,255,255,0.4)' stroke-width='1' stroke-dasharray='3 3'/>
+  <polygon points='200,70 270,105 200,140 130,105' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <rect x='190' y='95' width='20' height='20' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1' transform='rotate(45, 200, 105) scale(1, 0.5)'/>
+  <line x1='200' y1='140' x2='200' y2='190' stroke='rgba(255,255,255,0.4)' stroke-width='1' stroke-dasharray='3 3'/>
+  <polygon points='200,130 290,175 200,220 110,175' fill='rgba(255,255,255,0.02)' stroke='rgba(255,255,255,0.6)' stroke-width='2'/>
+  <polygon points='200,150 290,195 200,240 110,195' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <line x1='110' y1='175' x2='110' y2='195' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <line x1='290' y1='175' x2='290' y2='195' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <line x1='200' y1='220' x2='200' y2='240' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <polygon points='200,230 310,285 200,340 90,285' fill='rgba(255,255,255,0.03)'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>EXPLODED AXONOMETRIC</text>
+`);
+
+// ── 3. 3D Staircase Core ───────────────────────────────────────────────────
+const isoStairs = svg(`
+  <polygon points='200,40 280,80 200,120 120,80' fill='rgba(255,255,255,0.02)' stroke='rgba(255,255,255,0.3)' stroke-width='1'/>
+  <line x1='120' y1='80' x2='120' y2='240' stroke='rgba(255,255,255,0.3)' stroke-width='1'/>
+  <line x1='280' y1='80' x2='280' y2='240' stroke='rgba(255,255,255,0.3)' stroke-width='1'/>
+  ${Array.from({length: 8}).map((_, i) => `
+    <polygon points='${160 + i*5},${160 - i*10} ${180 + i*5},${170 - i*10} ${180 + i*5},${175 - i*10} ${160 + i*5},${165 - i*10}' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.6)' stroke-width='1'/>
+    <polygon points='${160 + i*5},${160 - i*10} ${140 + i*5},${150 - i*10} ${160 + i*5},${140 - i*10} ${180 + i*5},${170 - i*10}' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  `).join('')}
+  <polygon points='200,100 240,120 200,140 160,120' fill='rgba(255,255,255,0.1)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  ${Array.from({length: 8}).map((_, i) => `
+    <polygon points='${200 - i*5},${140 + i*10} ${180 - i*5},${150 + i*10} ${180 - i*5},${155 + i*10} ${200 - i*5},${145 + i*10}' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.6)' stroke-width='1'/>
+  `).join('')}
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>3D CIRCULATION CORE</text>
+`);
+
+// ── 4. Perspective Tunnel / Corridor ───────────────────────────────────────
+const perspectiveCorridor = svg(`
+  <line x1='10' y1='10' x2='180' y2='130' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <line x1='390' y1='10' x2='220' y2='130' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <line x1='10' y1='290' x2='180' y2='170' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <line x1='390' y1='290' x2='220' y2='170' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <rect x='10' y='10' width='380' height='280' fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <rect x='60' y='45' width='280' height='210' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='1.5'/>
+  <rect x='120' y='88' width='160' height='124' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'/>
+  <rect x='180' y='130' width='40' height='40' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.7)' stroke-width='2.5'/>
+  <line x1='60' y1='290' x2='190' y2='170' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <line x1='130' y1='290' x2='195' y2='170' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <line x1='200' y1='290' x2='200' y2='170' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <line x1='270' y1='290' x2='205' y2='170' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <line x1='340' y1='290' x2='210' y2='170' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <circle cx='200' cy='150' r='1' fill='rgba(255,255,255,0.8)'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>1-POINT CORRIDOR PERSPECTIVE</text>
+`);
+
+// ── 5. Extruded 3D Floor Plan ──────────────────────────────────────────────
+const extrudedPlan = svg(`
+  <polygon points='200,120 320,180 200,240 80,180' fill='rgba(255,255,255,0.03)' stroke='none'/>
+  <polygon points='320,180 200,240 200,200 320,140' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <polygon points='200,240 80,180 80,140 200,200' fill='rgba(255,255,255,0.02)' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <polygon points='200,80 320,140 200,200 80,140' fill='none' stroke='rgba(255,255,255,0.7)' stroke-width='2.5'/>
+  <polygon points='200,88 310,143 200,198 90,143' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <line x1='145' y1='115' x2='145' y2='155' stroke='rgba(255,255,255,0.5)' stroke-width='2'/>
+  <line x1='145' y1='155' x2='235' y2='155' stroke='rgba(255,255,255,0.5)' stroke-width='2'/>
+  <line x1='235' y1='155' x2='235' y2='115' stroke='rgba(255,255,255,0.5)' stroke-width='2'/>
+  <polygon points='145,155 165,145 165,160 145,170' fill='%230a0a0a' stroke='rgba(255,255,255,0.5)' stroke-width='1'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>AXONOMETRIC FLOOR PLAN</text>
+`);
+
+// ── 6. 3D Structural Node ──────────────────────────────────────────────────
+const isoNode = svg(`
+  <line x1='50' y1='225' x2='350' y2='75' stroke='rgba(255,255,255,0.2)' stroke-width='1' stroke-dasharray='5 5'/>
+  <line x1='50' y1='75' x2='350' y2='225' stroke='rgba(255,255,255,0.2)' stroke-width='1' stroke-dasharray='5 5'/>
+  <line x1='200' y1='10' x2='200' y2='290' stroke='rgba(255,255,255,0.2)' stroke-width='1' stroke-dasharray='5 5'/>
+  <circle cx='200' cy='150' r='25' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <ellipse cx='200' cy='150' rx='25' ry='12' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+  <polygon points='182,132 120,70 110,80 172,142' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <polygon points='218,132 280,70 290,80 228,142' fill='rgba(255,255,255,0.03)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <polygon points='218,168 280,230 290,220 228,158' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <polygon points='182,168 120,230 110,220 172,158' fill='rgba(255,255,255,0.03)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <rect x='190' y='50' width='20' height='75' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <rect x='190' y='175' width='20' height='75' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <circle cx='200' cy='150' r='4' fill='rgba(255,255,255,0.8)'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>3D SPACE FRAME NODE</text>
+`);
+
+// ── 7. Isometric Urban Massing ─────────────────────────────────────────────
+const urbanMassing = svg(`
+  <polygon points='200,140 340,210 200,280 60,210' fill='rgba(255,255,255,0.02)' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <polygon points='160,50 200,70 200,190 160,170' fill='rgba(255,255,255,0.04)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <polygon points='200,70 240,50 240,170 200,190' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <polygon points='200,30 240,50 200,70 160,50' fill='rgba(255,255,255,0.1)' stroke='rgba(255,255,255,0.8)' stroke-width='2'/>
+  <polygon points='240,110 280,130 280,210 240,190' fill='rgba(255,255,255,0.04)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <polygon points='280,130 320,110 320,190 280,210' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <polygon points='280,90 320,110 280,130 240,110' fill='rgba(255,255,255,0.1)' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <polygon points='120,150 160,170 160,230 120,210' fill='rgba(255,255,255,0.04)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <polygon points='160,170 200,150 200,210 160,230' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <polygon points='160,130 200,150 160,170 120,150' fill='rgba(255,255,255,0.1)' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>URBAN MASSING ISOMETRIC</text>
+`);
+
+// ── 8. Stepped Site Topography ─────────────────────────────────────────────
+const topographyModel = svg(`
+  <polygon points='200,280 340,210 200,140 60,210' fill='rgba(255,255,255,0.02)' stroke='rgba(255,255,255,0.3)' stroke-width='1.5'/>
+  <polygon points='200,260 320,200 200,140 80,200' fill='rgba(255,255,255,0.03)' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
+  <polygon points='200,240 300,190 200,140 100,190' fill='rgba(255,255,255,0.04)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <polygon points='200,220 280,180 200,140 120,180' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
+  <polygon points='200,200 260,170 200,140 140,170' fill='rgba(255,255,255,0.06)' stroke='rgba(255,255,255,0.7)' stroke-width='1.5'/>
+  <line x1='140' y1='170' x2='140' y2='190' stroke='rgba(255,255,255,0.3)' stroke-width='1'/>
+  <line x1='260' y1='170' x2='260' y2='190' stroke='rgba(255,255,255,0.3)' stroke-width='1'/>
+  <line x1='200' y1='200' x2='200' y2='280' stroke='rgba(255,255,255,0.3)' stroke-width='1'/>
+  <polygon points='200,110 230,125 200,140 170,125' fill='rgba(255,255,255,0.2)' stroke='rgba(255,255,255,0.9)' stroke-width='2'/>
+  <polygon points='170,125 200,140 200,170 170,155' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.7)' stroke-width='1.5'/>
+  <polygon points='200,140 230,125 230,155 200,170' fill='rgba(255,255,255,0.04)' stroke='rgba(255,255,255,0.7)' stroke-width='1.5'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>TOPOGRAPHY & SITE CONTOURS</text>
+`);
+
+// ── 9. Cantilevered Volumes ────────────────────────────────────────────────
+const cantileverBox = svg(`
+  <polygon points='160,160 200,180 200,260 160,240' fill='rgba(255,255,255,0.03)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <polygon points='200,180 240,160 240,240 200,260' fill='rgba(255,255,255,0.07)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  <polygon points='120,90 280,170 280,210 120,130' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <polygon points='120,90 160,70 320,150 280,170' fill='rgba(255,255,255,0.1)' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <polygon points='280,170 320,150 320,190 280,210' fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <line x1='120' y1='90' x2='160' y2='20' stroke='rgba(255,255,255,0.4)' stroke-width='1' stroke-dasharray='4 2'/>
+  <line x1='280' y1='170' x2='240' y2='20' stroke='rgba(255,255,255,0.4)' stroke-width='1' stroke-dasharray='4 2'/>
+  <circle cx='160' cy='20' r='3' fill='none' stroke='rgba(255,255,255,0.8)' stroke-width='1.5'/>
+  <circle cx='240' cy='20' r='3' fill='none' stroke='rgba(255,255,255,0.8)' stroke-width='1.5'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>CANTILEVER STRUCTURAL DIAGRAM</text>
+`);
+
+// ── 10. Parametric Pavilion (Ruled Surface) ────────────────────────────────
+const parametricPavilion = svg(`
+  ${Array.from({length: 20}).map((_, i) => `
+    <line x1='${50 + i*15}' y1='200' x2='${350 - i*15}' y2='80' stroke='rgba(255,255,255,${0.1 + (i/40)})' stroke-width='1'/>
+    <line x1='${50 + i*15}' y1='80' x2='${350 - i*15}' y2='200' stroke='rgba(255,255,255,${0.1 + (i/40)})' stroke-width='1'/>
+  `).join('')}
+  <polygon points='50,80 350,80 350,200 50,200' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2'/>
+  <line x1='50' y1='200' x2='50' y2='250' stroke='rgba(255,255,255,0.5)' stroke-width='2'/>
+  <line x1='350' y1='200' x2='350' y2='250' stroke='rgba(255,255,255,0.5)' stroke-width='2'/>
+  <line x1='200' y1='140' x2='200' y2='250' stroke='rgba(255,255,255,0.3)' stroke-width='1' stroke-dasharray='5 5'/>
+  <ellipse cx='200' cy='250' rx='150' ry='20' fill='rgba(255,255,255,0.02)' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>PARAMETRIC RULED SURFACE</text>
+`);
+
+// ── 11. Exploded Curtain Wall Facade ───────────────────────────────────────
+const explodedFacade = svg(`
+  <polygon points='100,240 300,140 320,150 120,250' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+  ${Array.from({length: 4}).map((_, i) => `
+    <polygon points='${140 + i*50},${220 - i*25} ${145 + i*50},${217 - i*25} ${145 + i*50},${77 - i*25} ${140 + i*50},${80 - i*25}' fill='rgba(255,255,255,0.1)' stroke='rgba(255,255,255,0.7)' stroke-width='1.5'/>
+  `).join('')}
+  ${Array.from({length: 3}).map((_, i) => `
+    <polygon points='${90 + i*50},${205 - i*25} ${130 + i*50},${185 - i*25} ${130 + i*50},${65 - i*25} ${90 + i*50},${85 - i*25}' fill='rgba(255,255,255,0.04)' stroke='rgba(255,255,255,0.8)' stroke-width='1'/>
+  `).join('')}
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>CURTAIN WALL EXPLODED ISO</text>
+`);
+
+// ── 12. 3D Space Frame Truss ───────────────────────────────────────────────
+const spaceFrameTruss = svg(`
+  <line x1='80' y1='200' x2='320' y2='120' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <line x1='120' y1='220' x2='360' y2='140' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  <line x1='80' y1='140' x2='320' y2='60' stroke='rgba(255,255,255,0.7)' stroke-width='2'/>
+  ${Array.from({length: 6}).map((_, i) => {
+    const x1 = 80 + i*40; const y1 = 200 - i*13.33;
+    const x2 = 120 + i*40; const y2 = 220 - i*13.33;
+    const xt = 80 + i*40 + 20; const yt = 140 - i*13.33 - 6.66;
+    return `
+      <line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/>
+      <line x1='${x1}' y1='${y1}' x2='${xt}' y2='${yt}' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+      <line x1='${x2}' y1='${y2}' x2='${xt}' y2='${yt}' stroke='rgba(255,255,255,0.4)' stroke-width='1'/>
+      <circle cx='${x1}' cy='${y1}' r='3' fill='rgba(10,10,10,1)' stroke='rgba(255,255,255,0.8)' stroke-width='1'/>
+      <circle cx='${x2}' cy='${y2}' r='3' fill='rgba(10,10,10,1)' stroke='rgba(255,255,255,0.8)' stroke-width='1'/>
+      <circle cx='${xt}' cy='${yt}' r='3' fill='rgba(10,10,10,1)' stroke='rgba(255,255,255,0.8)' stroke-width='1'/>
+    `;
+  }).join('')}
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>STRUCTURAL TRUSS ISOMETRIC</text>
+`);
+
+// ══════════════════════════════════════════════════════════════
+//  FLAT TECHNICAL DRAWINGS (13–24)
+// ══════════════════════════════════════════════════════════════
+
+// ── 13. Floor Plan ─────────────────────────────────────────────────────────
 const floorPlan = svg(`
   ${Array.from({length: 18}).map((_, i) => `<line x1='${i*20 + 20}' y1='20' x2='${i*20 + 20}' y2='270' stroke='rgba(255,255,255,0.05)' stroke-width='1'/>`).join('')}
   ${Array.from({length: 13}).map((_, i) => `<line x1='20' y1='${i*20 + 20}' x2='380' y2='${i*20 + 20}' stroke='rgba(255,255,255,0.05)' stroke-width='1'/>`).join('')}
@@ -332,6 +526,20 @@ const detailSection = svg(`
 `);
 
 export const ARCH_DRAWINGS = [
+  // 3D / isometric (1–12)
+  isoBuilding,
+  explodedAxon,
+  isoStairs,
+  perspectiveCorridor,
+  extrudedPlan,
+  isoNode,
+  urbanMassing,
+  topographyModel,
+  cantileverBox,
+  parametricPavilion,
+  explodedFacade,
+  spaceFrameTruss,
+  // Flat technical (13–24)
   floorPlan,
   elevation,
   section,
