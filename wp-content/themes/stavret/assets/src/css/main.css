@@ -229,6 +229,38 @@ h1, h2, h3, h4, h5, h6 {
 [data-reveal][data-delay="4"] { transition-delay: 0.4s; }
 [data-reveal][data-delay="5"] { transition-delay: 0.5s; }
 
+/* ── Animated gradient border ───────────────────────────────────
+   Registers --gradient-angle so CSS keyframes can interpolate it.
+   Classes map to the animationMode prop in BorderRotate. */
+@property --gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes gradient-rotate {
+  from { --gradient-angle: 0deg; }
+  to   { --gradient-angle: 360deg; }
+}
+
+.gradient-border-auto {
+  animation: gradient-rotate var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-hover {
+  /* static by default — animate on hover */
+}
+.gradient-border-hover:hover {
+  animation: gradient-rotate var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-stop-hover {
+  animation: gradient-rotate var(--animation-duration, 5s) linear infinite;
+}
+.gradient-border-stop-hover:hover {
+  animation-play-state: paused;
+}
+
 /* ── Reduced-motion ─────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

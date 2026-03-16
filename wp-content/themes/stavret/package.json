@@ -11,6 +11,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.37.0",
     "lenis": "^1.1.14",
+    "lucide-react": "^0.577.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwind-merge": "^3.5.0"
