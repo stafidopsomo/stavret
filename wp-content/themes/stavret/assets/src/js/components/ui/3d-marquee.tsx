@@ -52,7 +52,7 @@ export function ThreeDMarquee({ images = ARCH_DRAWINGS }: ThreeDMarqueeProps) {
               key={colIndex}
               animate={{ y: colIndex % 2 === 0 ? 30 : -30 }}
               transition={{
-                duration: colIndex % 2 === 0 ? 8 : 11,
+                duration: colIndex % 2 === 0 ? 6.9 : 9.5,
                 repeat: Infinity,
                 repeatType: 'reverse',
                 ease: 'easeInOut',
