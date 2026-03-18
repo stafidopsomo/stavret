@@ -54,23 +54,23 @@ get_header();
                     <div class="stavret-contact__info-block">
                         <h2 class="stavret-block-heading">Studio</h2>
                         <address>
-                            <p>Πλατεία Δημοκρατίας 5</p>
-                            <p>Νίκαια, Αττική</p>
+                            <p>Πλ. Δημοκρατίας 5</p>
+                            <p>Νίκαια 184 51</p>
                         </address>
                     </div>
 
                     <div class="stavret-contact__info-block">
-                        <h2 class="stavret-block-heading">Email</h2>
-                        <a href="mailto:studio@stavret.gr" class="stavret-contact__link">
-                            studio@stavret.gr
-                        </a>
+                        <h2 class="stavret-block-heading">Τηλέφωνα</h2>
+                        <a href="tel:+302104936704" class="stavret-contact__link">210 493 6704</a><br>
+                        <a href="tel:+306932168849" class="stavret-contact__link">693 216 8849</a><br>
+                        <a href="tel:+306982340977" class="stavret-contact__link">698 234 0977</a>
                     </div>
 
                     <div class="stavret-contact__info-block">
-                        <h2 class="stavret-block-heading">Phone</h2>
-                        <a href="tel:+302101234567" class="stavret-contact__link">
-                            +30 210 123 4567
-                        </a>
+                        <h2 class="stavret-block-heading">Αρχιτέκτονες</h2>
+                        <p class="stavret-contact__meta">Βρεττάκος Σταύρος</p>
+                        <p class="stavret-contact__meta">Καλιοτζίδου Μαρία</p>
+                        <p class="stavret-contact__meta stavret-contact__meta--dim">Αρχιτέκτονες Μηχανικοί ΕΜΠ</p>
                     </div>
 
                     <!-- Map placeholder — Nikaia, Attica -->
@@ -179,6 +179,19 @@ get_header();
 .stavret-contact__link:hover {
     color: var(--color-white);
     border-color: var(--color-white);
+}
+/* Architect names */
+.stavret-contact__meta {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-gray-300);
+    margin: 0;
+    line-height: 1.8;
+}
+.stavret-contact__meta--dim {
+    font-size: 0.8125rem;
+    color: var(--color-gray-500);
+    margin-top: 0.25rem;
 }
 /* Map */
 .stavret-map {

@@ -2,8 +2,8 @@
     <div class="stavret-footer__inner">
         <div class="stavret-footer__top">
             <div class="stavret-footer__brand">
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="stavret-logo">Stavret</a>
-                <p class="stavret-footer__tagline">Architecture Studio</p>
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="stavret-logo">Βρεττάκος &amp; Καλιοτζίδου</a>
+                <p class="stavret-footer__tagline">Αρχιτεκτονικό Γραφείο</p>
             </div>
 
             <nav class="stavret-footer__nav" aria-label="<?php esc_attr_e('Footer Navigation', 'stavret'); ?>">
@@ -17,10 +17,10 @@
 
         <div class="stavret-footer__bottom">
             <p class="stavret-footer__address">
-                Πλατεία Δημοκρατίας 5, Νίκαια
+                Πλ. Δημοκρατίας 5, Νίκαια 184 51 · 210 493 6704
             </p>
             <p class="stavret-footer__copy">
-                &copy; <?php echo esc_html(date('Y')); ?> Stavret. All rights reserved.
+                &copy; <?php echo esc_html(date('Y')); ?> Βρεττάκος &amp; Καλιοτζίδου. All rights reserved.
             </p>
         </div>
     </div>

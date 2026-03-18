@@ -173,7 +173,7 @@ export const GalleryScroll = forwardRef<HTMLElement, GalleryScrollProps>(
                 className="text-xs tracking-[0.3em] uppercase"
                 style={{ color: 'var(--color-gray-500)', fontFamily: 'var(--font-sans)' }}
               >
-                Stavret Studio · Νίκαια
+                Βρεττάκος &amp; Καλιοτζίδου · Νίκαια
               </p>
             </div>
           </footer>

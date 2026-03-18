@@ -153,24 +153,52 @@ export function HeroSection({ contactUrl = '/contact', aboutUrl = '/about' }: He
             margin: '0 0 3rem',
           }}
         >
-          Architecture Studio · Νίκαια
+          Αρχιτεκτονικό Γραφείο · Νίκαια
         </motion.p>
 
-        {/* Wordmark */}
-        <motion.h1
+        {/* Volumetric logo — self-animating */}
+        <motion.div
           variants={reduceMotion ? undefined : fadeUp}
-          style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: 'clamp(4rem, 10vw, 8rem)',
-            fontWeight: 300,
-            color: 'var(--color-white)',
-            margin: '0 0 0.5rem',
-            lineHeight: 0.88,
-            letterSpacing: '-0.02em',
-          }}
+          style={{ margin: '0 0 0.5rem' }}
         >
-          Stavret
-        </motion.h1>
+          <svg viewBox="0 0 380 300" fill="none" aria-hidden="true" style={{ width: 'clamp(160px, 22vw, 260px)', height: 'auto' }}>
+            <style>{`
+              @keyframes float1 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+              @keyframes float2 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+              @keyframes float3 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+              @keyframes float4 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+              #hero-box1 { animation: float1 4s ease-in-out infinite; }
+              #hero-box2 { animation: float2 5s ease-in-out infinite; }
+              #hero-box3 { animation: float3 4.5s ease-in-out infinite; }
+              #hero-box4 { animation: float4 3.5s ease-in-out infinite; }
+            `}</style>
+
+            {/* Box 1 — top-left: flat square, ~10° CW */}
+            <g id="hero-box1" transform="rotate(10, 95, 82)">
+              <rect x="55" y="42" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"/>
+              <rect x="62" y="49" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.5"/>
+            </g>
+
+            {/* Box 2 — top-right: 3D cube, front + top + right side */}
+            <g id="hero-box2">
+              <polygon points="250,55 330,55 352,33 272,33" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.7)" strokeWidth="2.5"/>
+              <polygon points="330,55 352,33 352,113 330,135" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.7)" strokeWidth="2.5"/>
+              <rect x="250" y="55" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"/>
+            </g>
+
+            {/* Box 3 — bottom-left: diamond (45° rotated square) */}
+            <g id="hero-box3" transform="rotate(45, 95, 215)">
+              <rect x="55" y="175" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"/>
+              <rect x="62" y="182" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.5"/>
+            </g>
+
+            {/* Box 4 — bottom-right: red square, ~-10° CCW */}
+            <g id="hero-box4" transform="rotate(-10, 295, 215)">
+              <rect x="255" y="175" width="80" height="80" fill="rgba(185,28,28,0.92)" stroke="rgba(255,255,255,0.82)" strokeWidth="2.5"/>
+              <rect x="262" y="182" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.38)" strokeWidth="1.5"/>
+            </g>
+          </svg>
+        </motion.div>
 
         {/* GooeyText morphing */}
         <motion.div

@@ -12,44 +12,46 @@ get_header();
 
             <!-- Page header -->
             <header class="stavret-page-header" data-reveal>
-                <p class="stavret-section-label">The Studio</p>
-                <h1 class="stavret-page-title">Stavret</h1>
+                <p class="stavret-section-label">Το Γραφείο</p>
+                <h1 class="stavret-page-title">Βρεττάκος &amp; Καλιοτζίδου</h1>
             </header>
 
             <!-- Two-column layout -->
             <div class="stavret-about__grid">
                 <div class="stavret-about__lead" data-reveal data-delay="1">
                     <p class="stavret-lead-text">
-                        We design spaces that endure — architecture rooted in material honesty,
-                        structural clarity, and a deep respect for the people who inhabit them.
+                        Σχεδιάζουμε χώρους που αντέχουν στο χρόνο — αρχιτεκτονική ριζωμένη στην υλική ειλικρίνεια,
+                        τη δομική σαφήνεια και το βαθύ σεβασμό για τους ανθρώπους που τους κατοικούν.
                     </p>
                 </div>
 
                 <div class="stavret-about__details">
                     <div class="stavret-about__block" data-reveal data-delay="2">
-                        <h2 class="stavret-block-heading">Practice</h2>
+                        <h2 class="stavret-block-heading">Μελέτη</h2>
                         <p class="stavret-about__text">
-                            Founded by Stavros in Nikaia, the studio operates across residential,
-                            commercial, and cultural typologies. Each project begins from first
-                            principles: site, light, programme, and the lived experience of space.
+                            Το γραφείο ιδρύθηκε από τους αρχιτέκτονες μηχανικούς ΕΜΠ
+                            <strong>Βρεττάκο Σταύρο</strong> &amp; <strong>Καλιοτζίδου Μαρία</strong>
+                            στη Νίκαια. Δραστηριοποιούμαστε σε κατοικίες, εμπορικά κτίρια
+                            και πολιτιστικά έργα. Κάθε μελέτη ξεκινά από τις βασικές αρχές:
+                            τόπος, φως, πρόγραμμα και η βιωμένη εμπειρία του χώρου.
                         </p>
                     </div>
 
                     <div class="stavret-about__block" data-reveal data-delay="3">
-                        <h2 class="stavret-block-heading">Approach</h2>
+                        <h2 class="stavret-block-heading">Προσέγγιση</h2>
                         <p class="stavret-about__text">
-                            We believe good architecture is inseparable from its context. Our work
-                            draws on the tectonic traditions of the Mediterranean while engaging
-                            contemporary construction methods and sustainability requirements.
+                            Πιστεύουμε ότι η καλή αρχιτεκτονική είναι αδιαχώριστη από το περιβάλλον της.
+                            Η δουλειά μας αντλεί από τις τεκτονικές παραδόσεις της Μεσογείου,
+                            αξιοποιώντας σύγχρονες κατασκευαστικές μεθόδους και απαιτήσεις βιωσιμότητας.
                         </p>
                     </div>
 
                     <div class="stavret-about__block" data-reveal data-delay="4">
-                        <h2 class="stavret-block-heading">Contact</h2>
+                        <h2 class="stavret-block-heading">Επικοινωνία</h2>
                         <address class="stavret-about__address">
-                            <p>Πλατεία Δημοκρατίας 5</p>
-                            <p>Νίκαια, Αττική</p>
-                            <p><a href="<?php echo esc_url(home_url('/contact')); ?>">Send a message</a></p>
+                            <p>Πλ. Δημοκρατίας 5, Νίκαια 184 51</p>
+                            <p><a href="tel:+302104936704">210 493 6704</a></p>
+                            <p><a href="<?php echo esc_url(home_url('/contact')); ?>">Επικοινωνήστε μαζί μας</a></p>
                         </address>
                     </div>
                 </div>

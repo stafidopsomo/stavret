@@ -10,9 +10,37 @@
 
 <header id="site-header" class="stavret-header">
     <nav class="stavret-nav" role="navigation" aria-label="<?php esc_attr_e('Primary Navigation', 'stavret'); ?>">
-        <!-- Logo -->
+        <!-- Logo: wireframe icon -->
         <a href="<?php echo esc_url(home_url('/')); ?>" class="stavret-logo" aria-label="<?php esc_attr_e('Stavret — Home', 'stavret'); ?>">
-            Stavret
+            <svg class="stavret-logo__icon" viewBox="0 0 380 300" width="50" height="40" fill="none" aria-hidden="true">
+                <style>
+                    @keyframes hfloat1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+                    @keyframes hfloat2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+                    @keyframes hfloat3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+                    @keyframes hfloat4 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+                    #hbox1 { animation: hfloat1 4s ease-in-out infinite; }
+                    #hbox2 { animation: hfloat2 5s ease-in-out infinite; }
+                    #hbox3 { animation: hfloat3 4.5s ease-in-out infinite; }
+                    #hbox4 { animation: hfloat4 3.5s ease-in-out infinite; }
+                </style>
+                <g id="hbox1" transform="rotate(10, 95, 82)">
+                    <rect x="55" y="42" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" stroke-width="2.5"/>
+                    <rect x="62" y="49" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+                </g>
+                <g id="hbox2">
+                    <polygon points="250,55 330,55 352,33 272,33" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+                    <polygon points="330,55 352,33 352,113 330,135" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+                    <rect x="250" y="55" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" stroke-width="2.5"/>
+                </g>
+                <g id="hbox3" transform="rotate(45, 95, 215)">
+                    <rect x="55" y="175" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" stroke-width="2.5"/>
+                    <rect x="62" y="182" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+                </g>
+                <g id="hbox4" transform="rotate(-10, 295, 215)">
+                    <rect x="255" y="175" width="80" height="80" fill="rgba(185,28,28,0.92)" stroke="rgba(255,255,255,0.82)" stroke-width="2.5"/>
+                    <rect x="262" y="182" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.5"/>
+                </g>
+            </svg>
         </a>
 
         <!-- Nav links -->
@@ -74,13 +102,25 @@
     justify-content: space-between;
 }
 .stavret-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--color-white);
+}
+.stavret-logo__icon {
+    flex-shrink: 0;
+    transition: opacity 200ms ease;
+}
+.stavret-logo:hover .stavret-logo__icon {
+    opacity: 0.8;
+}
+.stavret-logo__text {
     font-family: var(--font-heading);
     font-size: 1.375rem;
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-white);
-    text-decoration: none;
 }
 .stavret-nav__links {
     display: flex;
