@@ -1,0 +1,31 @@
+{
+  "_use-reduced-motion-CIVlSYAj.css": {
+    "file": "assets/use-reduced-motion-CIVlSYAj.css",
+    "src": "_use-reduced-motion-CIVlSYAj.css"
+  },
+  "_use-reduced-motion-DI1xwXTl.js": {
+    "file": "assets/use-reduced-motion-DI1xwXTl.js",
+    "name": "use-reduced-motion",
+    "css": [
+      "assets/use-reduced-motion-CIVlSYAj.css"
+    ]
+  },
+  "js/gallery.tsx": {
+    "file": "assets/gallery-B9lRNk6X.js",
+    "name": "gallery",
+    "src": "js/gallery.tsx",
+    "isEntry": true,
+    "imports": [
+      "_use-reduced-motion-DI1xwXTl.js"
+    ]
+  },
+  "js/main.tsx": {
+    "file": "assets/main-CfcteTj8.js",
+    "name": "main",
+    "src": "js/main.tsx",
+    "isEntry": true,
+    "imports": [
+      "_use-reduced-motion-DI1xwXTl.js"
+    ]
+  }
+}

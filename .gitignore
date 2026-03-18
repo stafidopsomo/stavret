@@ -31,7 +31,8 @@ wp-content/themes/index.php
 
 # ── Theme: build output + dependencies ────────────────────────
 wp-content/themes/stavret/node_modules/
-wp-content/themes/stavret/assets/dist/
+# dist is committed so the laptop doesn't need npm to run the site
+# wp-content/themes/stavret/assets/dist/
 
 # ── DDEV (generated files — kept via .ddev/.gitignore) ────────
 # .ddev/ is tracked (config.yaml, etc.) via its own ignore rules
@@ -39,6 +40,9 @@ wp-content/themes/stavret/assets/dist/
 # ── Database dumps ─────────────────────────────────────────────
 *.sql
 *.sql.gz
+# but allow the database/ folder dump for laptop setup
+!database/
+!database/*.sql.gz
 
 # ── macOS ──────────────────────────────────────────────────────
 .DS_Store
