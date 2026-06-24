@@ -112,7 +112,7 @@ PHP
 
 chown -R www-data:www-data /var/www/html
 
-mysql_base=(mysql --protocol=TCP -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" "-p${DB_PASSWORD}" "$DB_NAME")
+mysql_base=(mysql --protocol=TCP --ssl=0 -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" "-p${DB_PASSWORD}" "$DB_NAME")
 
 echo "Waiting for database TCP endpoint at ${DB_HOST}:${DB_PORT}..."
 for i in $(seq 1 90); do
