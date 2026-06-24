@@ -145,4 +145,10 @@ if command -v wp >/dev/null 2>&1; then
   "${wp_base[@]}" theme activate stavret >/dev/null || true
 fi
 
+# Railway exposed the same Apache MPM conflict on ergoal. Reassert prefork at
+# runtime too because the base image/entrypoint can leave event enabled.
+find /etc/apache2/mods-enabled -name 'mpm_*' -delete
+ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
+ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load
+
 exec apache2-foreground
