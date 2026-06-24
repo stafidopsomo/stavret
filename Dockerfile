@@ -14,6 +14,8 @@ RUN apt-get update \
 # from the official image and is copied into /var/www/html on first boot.
 COPY wp-content /usr/src/wordpress/wp-content
 COPY database/stavret-db.sql.gz /docker-entrypoint-initdb.d/stavret-db.sql.gz
+COPY .htaccess /usr/src/wordpress/.htaccess
+COPY healthz.html /usr/src/wordpress/healthz.html
 COPY docker/entrypoint.sh /usr/local/bin/stavret-entrypoint
 RUN chmod +x /usr/local/bin/stavret-entrypoint
 

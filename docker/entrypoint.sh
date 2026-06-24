@@ -104,6 +104,11 @@ define('DISALLOW_FILE_EDIT', true);
 define('WP_ENVIRONMENT_TYPE', stavret_env('WP_ENVIRONMENT_TYPE', 'production'));
 define('WP_DEBUG', filter_var(stavret_env('WP_DEBUG', 'false'), FILTER_VALIDATE_BOOLEAN));
 
+$config_extra = stavret_env('WORDPRESS_CONFIG_EXTRA');
+if ($config_extra !== '') {
+    eval($config_extra);
+}
+
 if (!defined('ABSPATH')) {
     define('ABSPATH', __DIR__ . '/');
 }
