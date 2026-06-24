@@ -113,20 +113,22 @@ PHP
 chown -R www-data:www-data /var/www/html
 
 mysql_base=(mysql --protocol=TCP -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" "-p${DB_PASSWORD}" "$DB_NAME")
-mysqladmin_base=(mysqladmin --protocol=TCP -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" "-p${DB_PASSWORD}")
 
-echo "Waiting for database at ${DB_HOST}:${DB_PORT}..."
-for i in $(seq 1 60); do
-  if "${mysqladmin_base[@]}" ping --silent >/dev/null 2>&1; then
+echo "Waiting for database TCP endpoint at ${DB_HOST}:${DB_PORT}..."
+for i in $(seq 1 90); do
+  if timeout 2 bash -c "</dev/tcp/${DB_HOST}/${DB_PORT}" >/dev/null 2>&1; then
     break
   fi
-  if [ "$i" = "60" ]; then
-    echo "Database did not become ready in time." >&2
+  if [ "$i" = "90" ]; then
+    echo "Database TCP endpoint did not become reachable in time." >&2
     exit 1
   fi
   sleep 2
 done
 
+# Now verify authenticated SQL access. Keep this error visible; otherwise an
+# auth/plugin problem looks like a generic Railway healthcheck failure.
+echo "Database TCP is reachable; checking WordPress tables..."
 if ! "${mysql_base[@]}" -Nse "SHOW TABLES LIKE 'wp_options';" | grep -q '^wp_options$'; then
   echo "Importing bundled Stavret database dump..."
   gzip -cd /docker-entrypoint-initdb.d/stavret-db.sql.gz | "${mysql_base[@]}"
