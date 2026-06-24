@@ -30,6 +30,26 @@ Dark, minimal, typographically driven — built to let the work speak.
 
 ---
 
+## Railway Deployment
+
+This repository is ready to deploy as a Dockerized WordPress app on Railway.
+
+1. Create a new Railway project and add a MySQL service.
+2. Add this GitHub repo as the app service. Railway will detect `railway.toml` and build the `Dockerfile`.
+3. Add/reference these variables on the app service from the MySQL service if Railway does not wire them automatically:
+   - `PORT=80`
+   - `WORDPRESS_DB_HOST=${{ MySQL.MYSQLHOST }}:${{ MySQL.MYSQLPORT }}`
+   - `WORDPRESS_DB_NAME=${{ MySQL.MYSQLDATABASE }}`
+   - `WORDPRESS_DB_USER=${{ MySQL.MYSQLUSER }}`
+   - `WORDPRESS_DB_PASSWORD=${{ MySQL.MYSQLPASSWORD }}`
+4. Generate a Railway public domain for the app service. The container uses `RAILWAY_PUBLIC_DOMAIN` to set `WP_HOME`/`WP_SITEURL` and rewrites the bundled DDEV URLs on boot.
+
+On the first successful boot, the container imports `database/stavret-db.sql.gz`, activates the `stavret` theme, and serves WordPress on Railway's injected `PORT`.
+
+Optional hardening: add unique WordPress salts as Railway variables (`AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`).
+
+---
+
 ## Getting Started
 
 ### Prerequisites

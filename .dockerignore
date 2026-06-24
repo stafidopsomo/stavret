@@ -1,0 +1,10 @@
+.git
+.gitignore
+.ddev
+.claude
+node_modules
+wp-content/themes/stavret/node_modules
+npm-debug.log*
+.DS_Store
+*.sql
+!database/stavret-db.sql.gz
