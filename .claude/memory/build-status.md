@@ -42,10 +42,17 @@ To re-seed: `ddev exec wp option delete stavret_data_seeded && ddev exec wp eval
 - `STARTUP.md` updated with real repo URL
 - Initial commit pushed to `main`
 
+## DONE (continued) — contact funnel
+
+- Contact form handler (`inc/contact-handler.php`) wired to `admin-post.php` and included from the theme.
+- Private `stavret_lead` CPT persists sanitized submissions before mail delivery, so enquiries remain recoverable even if `wp_mail()`/SMTP fails.
+- Contact form includes nonce validation, a honeypot spam trap, server-side field length caps, and visible success/error states.
+- README documents the production contact-form launch gate: configure real SMTP/mail transport on Railway and verify a deployed test submission. Do not commit SMTP credentials.
+
 ## PENDING / NEXT STEPS
 
 - [ ] Apply `/polish` pass on hero + gallery components
 - [ ] Add scroll-triggered reveal animations (GSAP or Framer Motion) to project cards
 - [ ] Gallery: add category filter tabs above the grid
-- [ ] Contact form: wire up `admin-post.php` handler to send email
+- [ ] Launch gate: configure Railway/prod SMTP mail transport and confirm a real deployed contact submission reaches the studio inbox
 - [ ] Export DB and commit: `ddev export-db --file=stavret-db.sql.gz`

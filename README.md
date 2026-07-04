@@ -48,6 +48,23 @@ On the first successful boot, the container imports `database/stavret-db.sql.gz`
 
 Optional hardening: add unique WordPress salts as Railway variables (`AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`).
 
+### Contact form production launch gate
+
+The contact form (`page-contact.php` / `inc/contact-handler.php`) stores every
+submission as a private `stavret_lead` post regardless of mail delivery, so
+enquiries are never lost. Before treating a deployment as launch-ready:
+
+1. Configure a real SMTP/mail transport (e.g. an SMTP plugin, or `wp_mail`
+   filters wired to your provider's API) via environment variables or plugin
+   settings on the Railway service — **never commit SMTP credentials to git**.
+2. Submit a real test enquiry against the deployed site and confirm the email
+   arrives. If it doesn't, check the `_stavret_lead_mail_status` /
+   `_stavret_lead_mail_error` post meta on the corresponding Lead (wp-admin →
+   Contact Leads) for the `wp_mail_failed` error.
+
+Until both steps are verified, treat the contact form as "captures leads but
+may not email them."
+
 ---
 
 ## Getting Started

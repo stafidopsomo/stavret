@@ -19,28 +19,47 @@ get_header();
             <div class="stavret-contact__grid">
                 <!-- Form -->
                 <div class="stavret-contact__form-wrap" data-reveal data-delay="1">
+                    <?php if (isset($_GET['sent']) && '1' === $_GET['sent']) : ?>
+                        <p class="stavret-form-notice stavret-form-notice--success">Thank you — your message has been sent. We'll be in touch shortly.</p>
+                    <?php elseif (isset($_GET['contact_error'])) :
+                        $stavret_contact_error = sanitize_key(wp_unslash($_GET['contact_error']));
+                        $stavret_error_messages = [
+                            'nonce'  => 'Your session expired. Please try again.',
+                            'fields' => 'Please fill in your name, a valid email, and a message.',
+                            'mail'   => 'Something went wrong sending your message. Please try again or contact us by phone.',
+                        ];
+                        $stavret_error_message = $stavret_error_messages[$stavret_contact_error] ?? 'Something went wrong. Please try again.';
+                    ?>
+                        <p class="stavret-form-notice stavret-form-notice--error"><?php echo esc_html($stavret_error_message); ?></p>
+                    <?php endif; ?>
                     <form class="stavret-contact__form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" novalidate>
                         <?php wp_nonce_field('stavret_contact', 'stavret_contact_nonce'); ?>
                         <input type="hidden" name="action" value="stavret_contact">
 
+                        <!-- Honeypot: hidden from real visitors, bots that fill every field trip this -->
+                        <div class="stavret-field-hp">
+                            <label for="contact-hp">Leave this field empty</label>
+                            <input type="text" id="contact-hp" name="contact_hp" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <div class="stavret-field">
                             <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" name="contact_name" placeholder="Your name" required autocomplete="name">
+                            <input type="text" id="contact-name" name="contact_name" placeholder="Your name" required autocomplete="name" maxlength="150">
                         </div>
 
                         <div class="stavret-field">
                             <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" name="contact_email" placeholder="your@email.com" required autocomplete="email">
+                            <input type="email" id="contact-email" name="contact_email" placeholder="your@email.com" required autocomplete="email" maxlength="200">
                         </div>
 
                         <div class="stavret-field">
                             <label for="contact-subject">Subject</label>
-                            <input type="text" id="contact-subject" name="contact_subject" placeholder="Project enquiry">
+                            <input type="text" id="contact-subject" name="contact_subject" placeholder="Project enquiry" maxlength="200">
                         </div>
 
                         <div class="stavret-field">
                             <label for="contact-message">Message</label>
-                            <textarea id="contact-message" name="contact_message" rows="6" placeholder="Tell us about your project..." required></textarea>
+                            <textarea id="contact-message" name="contact_message" rows="6" placeholder="Tell us about your project..." required maxlength="5000"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="margin-top:0.5rem">
@@ -109,6 +128,25 @@ get_header();
 @media (max-width: 900px) {
     .stavret-contact__grid { grid-template-columns: 1fr; gap: 3rem; }
 }
+/* Form notices */
+.stavret-form-notice {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    padding: 1rem 1.25rem;
+    margin: 0 0 2rem;
+    border-left: 2px solid;
+}
+.stavret-form-notice--success {
+    color: var(--color-white);
+    border-color: var(--color-white);
+    background: rgba(255,255,255,0.04);
+}
+.stavret-form-notice--error {
+    color: var(--color-gray-300);
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.02);
+}
 /* Form */
 .stavret-contact__form {
     display: flex;
@@ -119,6 +157,13 @@ get_header();
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+.stavret-field-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 .stavret-field label {
     font-family: var(--font-sans);
