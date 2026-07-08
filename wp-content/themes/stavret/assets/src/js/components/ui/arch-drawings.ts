@@ -335,32 +335,27 @@ const staircasePlan = svg(`
   <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>STAIRCASE DETAIL  1:50</text>
 `);
 
-// ── 6. Facade Module ───────────────────────────────────────────────────────
-const facadeModule = svg(`
-  <rect x='40' y='30' width='320' height='240' fill='none' stroke='rgba(255,255,255,0.7)' stroke-width='2.5'/>
-  
-  ${Array.from({length: 5}).map((_, i) => 
-    Array.from({length: 4}).map((_, j) => {
-      const cx = 40 + i*80;
-      const cy = 30 + j*80;
-      return `
-        <polygon points='${cx},${cy+40} ${cx+40},${cy+80} ${cx+80},${cy+40} ${cx+40},${cy}' fill='rgba(255,255,255,${(i+j)%2===0 ? '0.05' : '0.02'})' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/>
-        <line x1='${cx}' y1='${cy+40}' x2='${cx+80}' y2='${cy+40}' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
-        <line x1='${cx+40}' y1='${cy}' x2='${cx+40}' y2='${cy+80}' stroke='rgba(255,255,255,0.2)' stroke-width='1'/>
-      `;
-    }).join('')
+// ── 6. Star Mark ───────────────────────────────────────────────────────────
+const starMark = svg(`
+  <rect x='40' y='30' width='320' height='240' fill='none' stroke='rgba(255,255,255,0.12)' stroke-width='1' stroke-dasharray='8 6'/>
+  <circle cx='200' cy='150' r='102' fill='none' stroke='rgba(255,255,255,0.14)' stroke-width='1'/>
+  <circle cx='200' cy='150' r='42' fill='none' stroke='rgba(255,255,255,0.12)' stroke-width='1'/>
+
+  <line x1='200' y1='36' x2='200' y2='264' stroke='rgba(255,255,255,0.12)' stroke-width='1'/>
+  <line x1='86' y1='150' x2='314' y2='150' stroke='rgba(255,255,255,0.12)' stroke-width='1'/>
+  <line x1='108' y1='83' x2='292' y2='217' stroke='rgba(255,255,255,0.1)' stroke-width='1'/>
+  <line x1='292' y1='83' x2='108' y2='217' stroke='rgba(255,255,255,0.1)' stroke-width='1'/>
+
+  <polygon points='200,46 225,121 304,121 240,167 265,242 200,196 135,242 160,167 96,121 175,121'
+    fill='rgba(255,255,255,0.08)' stroke='rgba(255,255,255,0.76)' stroke-width='2.5' stroke-linejoin='round'/>
+  <polygon points='200,76 217,132 276,132 228,166 246,222 200,188 154,222 172,166 124,132 183,132'
+    fill='none' stroke='rgba(255,255,255,0.28)' stroke-width='1.5' stroke-linejoin='round'/>
+
+  ${[[200,46], [225,121], [304,121], [240,167], [265,242], [200,196], [135,242], [160,167], [96,121], [175,121]].map(([x,y]) =>
+    `<circle cx='${x}' cy='${y}' r='3.5' fill='rgba(10,10,10,1)' stroke='rgba(255,255,255,0.72)' stroke-width='1.5'/>`
   ).join('')}
 
-  ${Array.from({length: 5}).map((_, i) => 
-    Array.from({length: 4}).map((_, j) => {
-      const cx = 40 + i*80;
-      const cy = 30 + j*80;
-      return `<circle cx='${cx}' cy='${cy}' r='3' fill='rgba(10,10,10,1)' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/>
-              <circle cx='${cx+40}' cy='${cy+40}' r='4' fill='rgba(255,255,255,0.5)'/>`;
-    }).join('')
-  ).join('')}
-
-  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>PARAMETRIC FACADE MODULE  1:20</text>
+  <text x='18' y='293' font-family='monospace' font-size='7' letter-spacing='2.5' fill='rgba(255,255,255,0.22)'>STAR MARK  1:20</text>
 `);
 
 // ── 7. Column Grid ─────────────────────────────────────────────────────────
@@ -545,7 +540,7 @@ export const ARCH_DRAWINGS = [
   section,
   sitePlan,
   staircasePlan,
-  facadeModule,
+  starMark,
   columnGrid,
   windowDetail,
   proportionStudy,
