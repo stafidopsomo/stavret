@@ -1,31 +1,31 @@
 {
-  "_use-reduced-motion-CIVlSYAj.css": {
-    "file": "assets/use-reduced-motion-CIVlSYAj.css",
-    "src": "_use-reduced-motion-CIVlSYAj.css"
-  },
-  "_use-reduced-motion-DI1xwXTl.js": {
-    "file": "assets/use-reduced-motion-DI1xwXTl.js",
+  "_use-reduced-motion-ClWEOFBr.js": {
+    "file": "assets/use-reduced-motion-ClWEOFBr.js",
     "name": "use-reduced-motion",
     "css": [
-      "assets/use-reduced-motion-CIVlSYAj.css"
+      "assets/use-reduced-motion-DAKhYrWT.css"
     ]
   },
+  "_use-reduced-motion-DAKhYrWT.css": {
+    "file": "assets/use-reduced-motion-DAKhYrWT.css",
+    "src": "_use-reduced-motion-DAKhYrWT.css"
+  },
   "js/gallery.tsx": {
-    "file": "assets/gallery-B9lRNk6X.js",
+    "file": "assets/gallery-D6BWaVDL.js",
     "name": "gallery",
     "src": "js/gallery.tsx",
     "isEntry": true,
     "imports": [
-      "_use-reduced-motion-DI1xwXTl.js"
+      "_use-reduced-motion-ClWEOFBr.js"
     ]
   },
   "js/main.tsx": {
-    "file": "assets/main-CPVpxc-Y.js",
+    "file": "assets/main-BuF12dWX.js",
     "name": "main",
     "src": "js/main.tsx",
     "isEntry": true,
     "imports": [
-      "_use-reduced-motion-DI1xwXTl.js"
+      "_use-reduced-motion-ClWEOFBr.js"
     ]
   }
 }

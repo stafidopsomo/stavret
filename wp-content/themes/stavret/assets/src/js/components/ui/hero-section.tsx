@@ -156,46 +156,52 @@ export function HeroSection({ contactUrl = '/contact', aboutUrl = '/about' }: He
           Αρχιτεκτονικό Γραφείο · Νίκαια
         </motion.p>
 
-        {/* Volumetric logo — self-animating */}
+        {/* Logo mark — traced from logo.png reference */}
         <motion.div
           variants={reduceMotion ? undefined : fadeUp}
           style={{ margin: '0 0 0.5rem' }}
         >
-          <svg viewBox="0 0 380 300" fill="none" aria-hidden="true" style={{ width: 'clamp(160px, 22vw, 260px)', height: 'auto' }}>
-            <style>{`
-              @keyframes float1 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
-              @keyframes float2 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-              @keyframes float3 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-              @keyframes float4 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
-              #hero-box1 { animation: float1 4s ease-in-out infinite; }
-              #hero-box2 { animation: float2 5s ease-in-out infinite; }
-              #hero-box3 { animation: float3 4.5s ease-in-out infinite; }
-              #hero-box4 { animation: float4 3.5s ease-in-out infinite; }
-            `}</style>
+          <svg
+            viewBox="0 0 292 288"
+            fill="none"
+            aria-hidden="true"
+            style={{ width: 'clamp(150px, 20vw, 230px)', height: 'auto' }}
+          >
+            <defs>
+              <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="1.5" dy="2" stdDeviation="1.2" floodColor="rgba(0,0,0,0.45)" />
+              </filter>
+            </defs>
 
-            {/* Box 1 — top-left: flat square, ~10° CW */}
-            <g id="hero-box1" transform="rotate(10, 95, 82)">
-              <rect x="55" y="42" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"/>
-              <rect x="62" y="49" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.5"/>
+            {/* Top-left flat black square */}
+            <g filter="url(#logo-shadow)">
+              <rect x="42" y="18" width="87" height="86" fill="#1d191a" />
+              <rect x="42" y="18" width="87" height="86" fill="none" stroke="rgba(255,255,255,0.82)" strokeWidth="2" />
+              <rect x="46" y="21" width="80" height="80" fill="none" stroke="rgba(255,255,255,0.26)" strokeWidth="1.5" />
             </g>
 
-            {/* Box 2 — top-right: 3D cube, front + top + right side */}
-            <g id="hero-box2">
-              <polygon points="250,55 330,55 352,33 272,33" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.7)" strokeWidth="2.5"/>
-              <polygon points="330,55 352,33 352,113 330,135" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.7)" strokeWidth="2.5"/>
-              <rect x="250" y="55" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"/>
+            {/* Top-right raised black block */}
+            <g transform="rotate(-15 210 64)" filter="url(#logo-shadow)">
+              <polygon points="168,34 249,34 258,26 177,26" fill="rgba(255,255,255,0.58)" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" />
+              <polygon points="249,34 258,26 258,109 249,119" fill="rgba(255,255,255,0.42)" stroke="rgba(255,255,255,0.62)" strokeWidth="1.5" />
+              <rect x="168" y="34" width="81" height="81" fill="#1d191a" stroke="rgba(255,255,255,0.82)" strokeWidth="2" />
+              <rect x="173" y="39" width="71" height="71" fill="none" stroke="rgba(255,255,255,0.24)" strokeWidth="1.5" />
             </g>
 
-            {/* Box 3 — bottom-left: diamond (45° rotated square) */}
-            <g id="hero-box3" transform="rotate(45, 95, 215)">
-              <rect x="55" y="175" width="80" height="80" fill="#0a0a0a" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"/>
-              <rect x="62" y="182" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.5"/>
+            {/* Bottom-left diamond block */}
+            <g transform="rotate(45 88 185)" filter="url(#logo-shadow)">
+              <polygon points="47,144 128,144 138,154 57,154" fill="rgba(255,255,255,0.56)" stroke="rgba(255,255,255,0.64)" strokeWidth="1.5" />
+              <polygon points="128,144 138,154 138,235 128,225" fill="rgba(255,255,255,0.42)" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" />
+              <rect x="47" y="144" width="81" height="81" fill="#1d191a" stroke="rgba(255,255,255,0.82)" strokeWidth="2" />
+              <rect x="52" y="149" width="71" height="71" fill="none" stroke="rgba(255,255,255,0.24)" strokeWidth="1.5" />
             </g>
 
-            {/* Box 4 — bottom-right: red square, ~-10° CCW */}
-            <g id="hero-box4" transform="rotate(-10, 295, 215)">
-              <rect x="255" y="175" width="80" height="80" fill="rgba(185,28,28,0.92)" stroke="rgba(255,255,255,0.82)" strokeWidth="2.5"/>
-              <rect x="262" y="182" width="66" height="66" fill="none" stroke="rgba(255,255,255,0.38)" strokeWidth="1.5"/>
+            {/* Bottom-right red block */}
+            <g filter="url(#logo-shadow)">
+              <polygon points="173,223 258,223 253,237 168,237" fill="rgba(255,255,255,0.58)" stroke="rgba(255,255,255,0.64)" strokeWidth="1.5" />
+              <polygon points="258,139 263,143 263,225 258,223" fill="rgba(255,255,255,0.38)" stroke="rgba(255,255,255,0.55)" strokeWidth="1.5" />
+              <rect x="173" y="139" width="85" height="84" fill="#ed1c24" stroke="rgba(255,255,255,0.86)" strokeWidth="2" />
+              <rect x="177" y="143" width="77" height="76" fill="none" stroke="rgba(255,255,255,0.24)" strokeWidth="1.5" />
             </g>
           </svg>
         </motion.div>
